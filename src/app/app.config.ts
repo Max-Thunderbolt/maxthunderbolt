@@ -3,16 +3,17 @@ import { provideRouter, withHashLocation } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { provideClientHydration } from '@angular/platform-browser';
 import { routes } from './app.routes';
+import { environment } from '../environments/environment';
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyBNtngJ-70kiyu72k8o5PCbOgF6neBXsKA',
-  authDomain: 'maxthunderbolt-71c15.firebaseapp.com',
-  projectId: 'maxthunderbolt-71c15',
-  storageBucket: 'maxthunderbolt-71c15.firebasestorage.app',
-  messagingSenderId: '265660832262',
-  appId: '1:265660832262:web:f8543598e5823df97f8187',
-  measurementId: 'G-NM77CGZNPL',
+  apiKey: environment.API_KEY,
+  authDomain: environment.AUTH_DOMAIN,
+  projectId: environment.PROJECT_ID,
+  storageBucket: environment.STORAGE_BUCKET,
+  messagingSenderId: environment.MESSAGING_SENDER_ID,
+  appId: environment.APP_ID,
+  measurementId: environment.MEASUREMENT_ID,
 };
 
 // Simple service to provide Firebase config
