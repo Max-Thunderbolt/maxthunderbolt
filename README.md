@@ -1,6 +1,33 @@
-# Thunderai
+# ThunderAI
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
+This is an Angular-based AI assistant application with Firebase integration. The application uses Angular 19 and provides a chatbot interface along with CV analysis capabilities.
+
+## Project Overview
+
+ThunderAI is designed to provide intelligent assistance through:
+- Chat-based AI interface
+- CV analysis and processing
+- User authentication and profiles
+- Dashboard for user activity
+
+## Prerequisites
+
+- Node.js (18.x or later)
+- Angular CLI (v19.x)
+- Firebase account
+
+## Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/Max-Thunderbolt/maxthunderbolt.git
+
+# Navigate to the project directory
+cd maxthunderbolt
+
+# Install dependencies
+npm install
+```
 
 ## Development server
 
@@ -57,3 +84,31 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Firebase Configuration
+
+This project uses Firebase for authentication, hosting, and database services. Make sure to:
+
+1. Create a Firebase project
+2. Configure your Firebase credentials in the environment files
+3. Enable authentication methods as needed
+
+## Deployment
+
+The project is configured for Firebase hosting. To deploy:
+
+```bash
+# Build the project for production
+ng build
+
+# Deploy to Firebase
+firebase deploy
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
