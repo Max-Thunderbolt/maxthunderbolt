@@ -1,0 +1,110 @@
+<div class="cv-container">
+    <button class="back-button" (click)="goBack()">
+      <i class="icon-back"></i>
+    </button>
+
+    <header class="cv-header">
+      <h1>{{ cvData.personalInfo.name }}</h1>
+      <h2>{{ cvData.personalInfo.title }}</h2>
+      <p>{{ cvData.personalInfo.contact }}</p>
+    </header>
+
+    <section class="cv-section">
+      <h3>Professional Summary</h3>
+      <p>
+        {{ cvData.summary }}
+      </p>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="cv-section">
+      <h3>Skills</h3>
+      <div class="skills-container">
+        <h4>Programming Languages</h4>
+        <div class="skill-chips">
+          <div class="skill-chip" *ngFor="let skill of programmingLanguages">
+            <i [class]="getIconInfo(skill).prefix + ' ' + getIconInfo(skill).class"></i>
+            {{ skill.name }}
+          </div>
+        </div>
+
+        <h4>Frameworks & Libraries</h4>
+        <div class="skill-chips">
+          <div class="skill-chip" *ngFor="let skill of frameworks">
+            <i [class]="getIconInfo(skill).prefix + ' ' + getIconInfo(skill).class"></i>
+            {{ skill.name }}
+          </div>
+        </div>
+
+        <h4>Tools & Technologies</h4>
+        <div class="skill-chips">
+          <div class="skill-chip" *ngFor="let skill of tools">
+            <i [class]="getIconInfo(skill).prefix + ' ' + getIconInfo(skill).class"></i>
+            {{ skill.name }}
+          </div>
+        </div>
+
+        <h4>Databases</h4>
+        <div class="skill-chips">
+          <div class="skill-chip" *ngFor="let skill of databases">
+            <i [class]="getIconInfo(skill).prefix + ' ' + getIconInfo(skill).class"></i>
+            {{ skill.name }}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="cv-section">
+      <h3>Experience</h3>
+      <div class="experience-item" *ngFor="let exp of cvData.experience">
+        <h4>{{ exp.company }}</h4>
+        <p class="position">{{ exp.position }}</p>
+        <p class="date">{{ exp.period }}</p>
+        <ul>
+          <li *ngFor="let responsibility of exp.responsibilities">
+            {{ responsibility }}
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="cv-section">
+      <h3>Education</h3>
+      <div class="education-item" *ngFor="let edu of cvData.education">
+        <h4>{{ edu.institution }}</h4>
+        <p class="degree">{{ edu.degree }}</p>
+        <p class="date">{{ edu.year }}</p>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="cv-section">
+      <h3>References</h3>
+      <div class="experience-item" *ngFor="let ref of cvData.references">
+        <h4>{{ ref.name }}</h4>
+        <p class="position">{{ ref.position }}</p>
+        <p class="date">{{ ref.contact }}</p>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="cv-section">
+      <h3>Further Accomplishments</h3>
+      <div class="experience-item" *ngFor="let acc of cvData.accomplishments">
+        <h4>{{ acc.title }}</h4>
+        <ul>
+          <li *ngFor="let item of acc.items">
+            <p class="position">{{ item.description }}</p>
+            <p class="date">{{ item.year }}</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+</div>

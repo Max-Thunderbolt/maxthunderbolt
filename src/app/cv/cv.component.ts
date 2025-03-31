@@ -7,118 +7,7 @@ import { CvDataService, Skill } from '../services/cv-data.service';
   selector: 'app-cv',
   standalone: true,
   imports: [CommonModule],
-  template: /* html */ `
-    <div class="cv-container">
-      <button class="back-button" (click)="goBack()">
-        <i class="icon-back"></i>
-      </button>
-
-      <header class="cv-header">
-        <h1>{{ cvData.personalInfo.name }}</h1>
-        <h2>{{ cvData.personalInfo.title }}</h2>
-        <p>{{ cvData.personalInfo.contact }}</p>
-      </header>
-
-      <section class="cv-section">
-        <h3>Professional Summary</h3>
-        <p>
-          {{ cvData.summary }}
-        </p>
-      </section>
-
-      <div class="divider"></div>
-
-      <section class="cv-section">
-        <h3>Skills</h3>
-        <div class="skills-container">
-          <h4>Programming Languages</h4>
-          <div class="skill-chips">
-            <div class="skill-chip" *ngFor="let skill of programmingLanguages">
-              <i class="skill-icon" [ngClass]="'icon-' + skill.icon"></i>
-              {{ skill.name }}
-            </div>
-          </div>
-
-          <h4>Frameworks & Libraries</h4>
-          <div class="skill-chips">
-            <div class="skill-chip" *ngFor="let skill of frameworks">
-              <i class="skill-icon" [ngClass]="'icon-' + skill.icon"></i>
-              {{ skill.name }}
-            </div>
-          </div>
-
-          <h4>Tools & Technologies</h4>
-          <div class="skill-chips">
-            <div class="skill-chip" *ngFor="let skill of tools">
-              <i class="skill-icon" [ngClass]="'icon-' + skill.icon"></i>
-              {{ skill.name }}
-            </div>
-          </div>
-
-          <h4>Databases</h4>
-          <div class="skill-chips">
-            <div class="skill-chip" *ngFor="let skill of databases">
-              <i class="skill-icon" [ngClass]="'icon-' + skill.icon"></i>
-              {{ skill.name }}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="divider"></div>
-
-      <section class="cv-section">
-        <h3>Experience</h3>
-        <div class="experience-item" *ngFor="let exp of cvData.experience">
-          <h4>{{ exp.company }}</h4>
-          <p class="position">{{ exp.position }}</p>
-          <p class="date">{{ exp.period }}</p>
-          <ul>
-            <li *ngFor="let responsibility of exp.responsibilities">
-              {{ responsibility }}
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div class="divider"></div>
-
-      <section class="cv-section">
-        <h3>Education</h3>
-        <div class="education-item" *ngFor="let edu of cvData.education">
-          <h4>{{ edu.institution }}</h4>
-          <p class="degree">{{ edu.degree }}</p>
-          <p class="date">{{ edu.year }}</p>
-        </div>
-      </section>
-
-      <div class="divider"></div>
-
-      <section class="cv-section">
-        <h3>References</h3>
-        <div class="experience-item" *ngFor="let ref of cvData.references">
-          <h4>{{ ref.name }}</h4>
-          <p class="position">{{ ref.position }}</p>
-          <p class="date">{{ ref.contact }}</p>
-        </div>
-      </section>
-
-      <div class="divider"></div>
-
-      <section class="cv-section">
-        <h3>Further Accomplishments</h3>
-        <div class="experience-item" *ngFor="let acc of cvData.accomplishments">
-          <h4>{{ acc.title }}</h4>
-          <ul>
-            <li *ngFor="let item of acc.items">
-              <p class="position">{{ item.description }}</p>
-              <p class="date">{{ item.year }}</p>
-            </li>
-          </ul>
-        </div>
-      </section>
-    </div>
-  `,
+  templateUrl: './cv.component.html',
   styles: [
     `
       :host {
@@ -237,38 +126,9 @@ import { CvDataService, Skill } from '../services/cv-data.service';
         box-shadow: 0 4px 12px rgba(233, 30, 99, 0.2);
       }
 
-      .skill-icon {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-      }
-
-      .icon-code {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e91e63'%3E%3Cpath d='M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z'/%3E%3C/svg%3E");
-      }
-
-      .icon-javascript {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e91e63'%3E%3Cpath d='M3 3h18v18H3V3zm16.525 13.707c-.131-.821-.666-1.511-2.252-2.155-.552-.259-1.165-.438-1.349-.854-.068-.248-.078-.382-.034-.529.113-.484.687-.629 1.137-.495.293.09.563.315.732.676.775-.507.775-.507 1.316-.844-.203-.314-.304-.451-.439-.586-.473-.528-1.103-.798-2.126-.775l-.528.067c-.507.124-.991.395-1.283.754-.855.968-.608 2.655.427 3.354 1.023.765 2.521.933 2.712 1.653.18.878-.652 1.159-1.475 1.058-.607-.136-.945-.439-1.316-1.002l-1.372.788c.157.359.337.517.607.832 1.305 1.316 4.568 1.249 5.153-.754.021-.067.18-.528.056-1.237l.034.049zm-6.737-5.434h-1.686c0 1.453-.007 2.898-.007 4.354 0 .924.047 1.772-.104 2.033-.247.517-.886.451-1.175.359-.297-.146-.448-.349-.623-.641-.047-.078-.082-.146-.095-.146l-1.368.844c.229.473.563.879.994 1.137.641.383 1.502.507 2.404.305.588-.17 1.095-.519 1.358-1.059.384-.697.302-1.553.299-2.509.008-1.541 0-3.083 0-4.635l.003-.042z'/%3E%3C/svg%3E");
-      }
-
-      .icon-web {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e91e63'%3E%3Cpath d='M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z'/%3E%3C/svg%3E");
-      }
-
-      .icon-developer_board {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e91e63'%3E%3Cpath d='M22 9V7h-2V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2v-2h-2V9h2zm-4 10H4V5h14v14zM6 13h5v4H6zm6-6h4v3h-4zm0 4h4v6h-4zm-6-3h5v2H6z'/%3E%3C/svg%3E");
-      }
-
-      .icon-source_control,
-      .icon-merge,
-      .icon-developer_mode,
-      .icon-integration_instructions,
-      .icon-cloud,
-      .icon-storage {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e91e63'%3E%3Cpath d='M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z'/%3E%3C/svg%3E");
+      .skill-chip i {
+        color: var(--primary-color);
+        font-size: 1.2rem;
       }
 
       .experience-item,
@@ -345,6 +205,82 @@ export class CvComponent {
     this.frameworks = this.cvData.skills.frameworks;
     this.tools = this.cvData.skills.tools;
     this.databases = this.cvData.skills.databases;
+  }
+
+  getIconInfo(skill: Skill): { class: string, prefix: string } {
+    // Mapping for all programming languages and technologies with appropriate Font Awesome icons
+    const iconMap: {[key: string]: { class: string, prefix: string }} = {
+      // Programming Languages
+      'TypeScript': { class: 'fa-js-square', prefix: 'fab' },
+      'JavaScript': { class: 'fa-js', prefix: 'fab' },
+      'Python': { class: 'fa-python', prefix: 'fab' },
+      'Java': { class: 'fa-java', prefix: 'fab' },
+      'C#': { class: 'fa-microsoft', prefix: 'fab' },
+      'C++': { class: 'fa-file-code', prefix: 'fas' },
+      'Kotlin': { class: 'fa-android', prefix: 'fab' },
+      'HTML': { class: 'fa-html5', prefix: 'fab' },
+      'CSS': { class: 'fa-css3-alt', prefix: 'fab' },
+      'SQL': { class: 'fa-database', prefix: 'fas' },
+      
+      // Frameworks
+      'Angular': { class: 'fa-angular', prefix: 'fab' },
+      '.NET': { class: 'fa-microsoft', prefix: 'fab' },
+      
+      // Tools
+      'Git': { class: 'fa-git-alt', prefix: 'fab' },
+      'GitHub': { class: 'fa-github', prefix: 'fab' },
+      'VS Code': { class: 'fa-file-code', prefix: 'fas' },
+      'Visual Studio': { class: 'fa-microsoft', prefix: 'fab' },
+      'IntelliJ': { class: 'fa-java', prefix: 'fab' },
+      'Azure': { class: 'fa-cloud', prefix: 'fas' },
+      'Firebase': { class: 'fa-fire', prefix: 'fas' },
+      'SSMS': { class: 'fa-database', prefix: 'fas' },
+      'Postman': { class: 'fa-paper-plane', prefix: 'fas' },
+      
+      // Databases
+      'SQL Server': { class: 'fa-database', prefix: 'fas' },
+      'MongoDB': { class: 'fa-database', prefix: 'fas' },
+      'MySQL': { class: 'fa-database', prefix: 'fas' },
+      'Oracle': { class: 'fa-database', prefix: 'fas' },
+      'MySQL Workbench': { class: 'fa-database', prefix: 'fas' }
+    };
+    
+    // First try to find by skill name (most accurate)
+    if (iconMap[skill.name]) {
+      return iconMap[skill.name];
+    }
+    
+    // Fallback mappings for generic icon types
+    const fallbackMap: {[key: string]: { class: string, prefix: string }} = {
+      'code': { class: 'fa-code', prefix: 'fas' },
+      'javascript': { class: 'fa-js', prefix: 'fab' },
+      'typescript': { class: 'fa-js-square', prefix: 'fab' },
+      'python': { class: 'fa-python', prefix: 'fab' },
+      'java': { class: 'fa-java', prefix: 'fab' },
+      'csharp': { class: 'fa-microsoft', prefix: 'fab' },
+      'cpp': { class: 'fa-file-code', prefix: 'fas' },
+      'kotlin': { class: 'fa-android', prefix: 'fab' },
+      'html': { class: 'fa-html5', prefix: 'fab' },
+      'css': { class: 'fa-css3-alt', prefix: 'fab' },
+      'database': { class: 'fa-database', prefix: 'fas' },
+      'web': { class: 'fa-angular', prefix: 'fab' },
+      'developer_board': { class: 'fa-microsoft', prefix: 'fab' },
+      'source_control': { class: 'fa-git-alt', prefix: 'fab' },
+      'merge': { class: 'fa-github', prefix: 'fab' },
+      'developer_mode': { class: 'fa-file-code', prefix: 'fas' },
+      'integration_instructions': { class: 'fa-java', prefix: 'fab' },
+      'cloud': { class: 'fa-cloud', prefix: 'fas' },
+      'fire': { class: 'fa-fire', prefix: 'fas' },
+      'storage': { class: 'fa-database', prefix: 'fas' }
+    };
+    
+    // Try to find by icon type
+    if (fallbackMap[skill.icon]) {
+      return fallbackMap[skill.icon];
+    }
+    
+    // Default fallback
+    return { class: 'fa-code', prefix: 'fas' };
   }
 
   goBack() {

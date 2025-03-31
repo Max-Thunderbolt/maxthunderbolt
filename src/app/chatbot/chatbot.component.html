@@ -1,0 +1,57 @@
+<div class="chat-container">
+    <div class="chat-card">
+        <button class="back-button" (click)="goBack()">
+            <i class="icon-back"></i>
+        </button>
+        <div class="chat-header">
+            <div class="chat-header-content">
+                <h2>Chat with AI Assistant</h2>
+                <p>Ask me anything about the CV</p>
+            </div>
+            <div class="header-actions">
+                <button class="profile-button" (click)="navigateToProfile()">Profile</button>
+                <button class="logout-button" (click)="logout()">Logout</button>
+            </div>
+        </div>
+
+        <div class="chat-content">
+            <div class="messages">
+                <div *ngFor="let message of messages" class="message" [ngClass]="{
+              'user-message': message.isUser,
+              'bot-message': !message.isUser
+            }">
+                    <div class="message-content">
+                        {{ message.content }}
+                    </div>
+                    <div class="message-timestamp">
+                        {{ message.timestamp | date : 'shortTime' }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="suggested-prompts" *ngIf="shouldShowSuggestedPrompts()">
+            <button class="prompt-button" (click)="useSuggestedPrompt('Tell me about Max and his experience as a developer')">
+                <i class="icon-code-prompt"></i>
+                Tell me about Max and his experience as a developer
+            </button>
+            <button class="prompt-button" (click)="useSuggestedPrompt('I want to contact Max')">
+                <i class="icon-contact-prompt"></i>
+                I want to contact Max
+            </button>
+            <button class="prompt-button" (click)="useSuggestedPrompt('What makes Max standout?')">
+                <i class="icon-star-prompt"></i>
+                What makes Max standout?
+            </button>
+        </div>
+
+        <div class="chat-input">
+            <div class="input-field">
+                <input [(ngModel)]="currentMessage" (keyup.enter)="sendMessage()" placeholder="Type your message..." [disabled]="isProcessing" />
+            </div>
+            <button class="send-button" (click)="sendMessage()" [disabled]="isProcessing || !currentMessage.trim()">
+                <i class="icon-send"></i>
+            </button>
+        </div>
+    </div>
+</div>

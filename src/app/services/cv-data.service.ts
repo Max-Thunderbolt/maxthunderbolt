@@ -40,12 +40,16 @@ export class CvDataService {
       'Through my studies in Application Development, I have gained strong programming skills across multiple languages, enabling me to develop software solutions for both web and mobile platforms. I have experience in designing and managing databases, ensuring efficient data storage and retrieval. My knowledge of networking and system connectivity allows me to create integrated solutions that function seamlessly. I am also skilled in troubleshooting, testing, and optimizing applications to enhance performance and user experience. Additionally, I have hands-on experience in cloud computing, software customization, and project management, equipping me with the ability to develop, deploy, and maintain scalable applications tailored to specific business needs. I have also gained practical experience as a junior software engineer at EaseFica, where I contribute to software development projects in a professional setting. Furthermore, I have valuable exposure to enterprise-level IT infrastructure. Beyond software development, I have experience teaching IT to students in grades 1-7, which has strengthened my ability to communicate complex technical concepts in a simple and engaging way, reinforcing both my problem-solving and leadership skills.',
     skills: {
       programmingLanguages: [
-        { name: 'TypeScript', icon: 'code' },
+        { name: 'TypeScript', icon: 'typescript' },
         { name: 'JavaScript', icon: 'javascript' },
-        { name: 'Python', icon: 'code' },
-        { name: 'Java', icon: 'code' },
-        { name: 'C#', icon: 'code' },
+        { name: 'Python', icon: 'python' },
+        { name: 'Java', icon: 'java' },
+        { name: 'C#', icon: 'csharp' },
         { name: 'C++', icon: 'code' },
+        { name: 'Kotlin', icon: 'kotlin' },
+        { name: 'HTML', icon: 'html' },
+        { name: 'CSS', icon: 'css' },
+        { name: 'SQL', icon: 'database' },
       ],
       frameworks: [
         { name: 'Angular', icon: 'web' },
@@ -58,7 +62,7 @@ export class CvDataService {
         { name: 'Visual Studio', icon: 'developer_mode' },
         { name: 'IntelliJ', icon: 'integration_instructions' },
         { name: 'Azure', icon: 'cloud' },
-        { name: 'Firebase', icon: 'code' },
+        { name: 'Firebase', icon: 'fire' },
         { name: 'SSMS', icon: 'storage' },
       ],
       databases: [

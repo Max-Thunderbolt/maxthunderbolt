@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -30,9 +31,9 @@ import { trigger, transition, style, animate } from '@angular/animations';
           <div class="card-icon">
             <i class="icon-chat"></i>
           </div>
-          <h2 class="card-title">Chat with AI</h2>
+          <h2 class="card-title">Chat assistant</h2>
           <p class="card-content">
-            Interact with an AI assistant to learn more about my experience.
+            Interact with an assistant to learn more about my experience and to get in touch with me.
           </p>
           <div class="card-action">
             <button class="btn">CHAT</button>
@@ -281,27 +282,32 @@ import { trigger, transition, style, animate } from '@angular/animations';
   animations: [
     trigger('fadeIn', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(30px)' }),
-        animate(
-          '1s cubic-bezier(0.25, 0.8, 0.25, 1)',
-          style({ opacity: 1, transform: 'translateY(0)' })
-        ),
-      ]),
-    ]),
-  ],
+        style({ opacity: 0, transform: 'translateY(20px)' }),
+        animate('0.5s ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
+      ])
+    ])
+  ]
 })
 export class HomeComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   navigateToCV() {
     this.router.navigate(['/cv']);
   }
 
   navigateToChatbot() {
-    this.router.navigate(['/chatbot']);
+    this.authService.authState$.subscribe(state => {
+      if (state.isAuthenticated) {
+        this.router.navigate(['/chatbot']);
+      } else {
+        this.router.navigate(['/login'], { 
+          queryParams: { returnUrl: '/chatbot' } 
+        });
+      }
+    });
   }
 
   navigateToGithub() {
-    window.open('https://github.com/Max-Thunderbolt', '_blank');
+    window.open('https://github.com/MaxThunderBolt', '_blank');
   }
 }
