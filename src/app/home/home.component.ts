@@ -52,6 +52,19 @@ import { AuthService } from '../services/auth/auth.service';
             <button class="btn">VISIT</button>
           </div>
         </div>
+
+        <div class="card" (click)="navigateToEquipt()">
+          <div class="card-icon">
+            <i class="icon-project"></i>
+          </div>
+          <h2 class="card-title">Equipt Project</h2>
+          <p class="card-content">
+            Explore my project management web application built with Firebase.
+          </p>
+          <div class="card-action">
+            <button class="btn">DEMO</button>
+          </div>
+        </div>
       </div>
     </div>
   `,
@@ -173,7 +186,8 @@ import { AuthService } from '../services/auth/auth.service';
 
       .icon-description::before,
       .icon-chat::before,
-      .icon-code::before {
+      .icon-code::before,
+      .icon-project::before {
         content: '';
         display: block;
         width: 40px;
@@ -194,6 +208,10 @@ import { AuthService } from '../services/auth/auth.service';
 
       .icon-code::before {
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e91e63'%3E%3Cpath d='M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z'/%3E%3C/svg%3E");
+      }
+
+      .icon-project::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e91e63'%3E%3Cpath d='M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z'/%3E%3C/svg%3E");
       }
 
       .card-title {
@@ -309,5 +327,9 @@ export class HomeComponent {
 
   navigateToGithub() {
     window.open('https://github.com/MaxThunderBolt', '_blank');
+  }
+
+  navigateToEquipt() {
+    window.open('https://equipt-d6408.firebaseapp.com/', '_blank');
   }
 }
